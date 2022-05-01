@@ -60,4 +60,5 @@ $route['signup']['POST'] = 'Signup/create';
 $route['login']['GET'] = 'Login/index';
 $route['login']['POST'] = 'Login/find';
 
-$route['getuserprofile']['POST'] = 'Getalluser/find';
+$route['getuserprofile']['POST'] = 'GetUserProfile/find';
+$route['getalluser']['POST'] = 'Getalluser/find';

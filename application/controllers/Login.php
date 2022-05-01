@@ -22,11 +22,13 @@ class Login extends CI_Controller {
             // do the get here.. here 
             $sql = "SELECT * FROM user where email = '$email' ";
             $results = $this->db->query($sql);
+            $tidd;
             if($results){
                 foreach ($results->result() as $row) {
                     $hashedPwd =  $row-> password;
                     $id = $row -> user_id;
                     $name = $row -> username;
+                    $tidd= $row->id;
                 }
                 if(password_verify($password,$hashedPwd) == 1){
                     function logintoken() { 
@@ -52,7 +54,7 @@ class Login extends CI_Controller {
                         'finish_time' => $expiry_time,
                         );
                     $this->db->update('user',$data);
-                    $details = array('user_id'=> $id, 'name'=> $name,'token-key' => $key, 'status'=> 'Login Succesfully', 'message'=>'You can access other api with the token key, expires in 30 minutes', 'time-created'=> date($time), 'time-expires'=> date($expiry_time));
+                    $details = array('user_id'=> $id,'id'=>$tidd, 'name'=> $name,'token-key' => $key, 'status'=> 'Login Succesfully', 'message'=>'You can access other api with the token key, expires in 30 minutes', 'time-created'=> date($time), 'time-expires'=> date($expiry_time));
                     echo json_encode($details);
                 }
                 else{

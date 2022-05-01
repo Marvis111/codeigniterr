@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Getalluser extends CI_Controller {
+class GetUserProfile extends CI_Controller {
 
 	public function index()
 	{
